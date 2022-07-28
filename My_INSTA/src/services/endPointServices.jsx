@@ -3,13 +3,13 @@ import { getPutToBaseResult } from '../redux/Selectors/baseSelectors'
 import { putToBaseAPI } from '../API/putToBaseAPI'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-
+import { BACKED_ADDRESS } from '../constants/constants'
 
 
 
 /**
  * Ендпоинт для сохранения нового имени группы.
- * @endpoint http://127.0.0.1:8000/api/privaterooms/
+ * @endpoint http://${BACKED_ADDRESS}/api/privaterooms/
  * @service putToBaseAPI
  * @param {"privateChatName": newRoomName} newRoomName - новое название комнаты
  */

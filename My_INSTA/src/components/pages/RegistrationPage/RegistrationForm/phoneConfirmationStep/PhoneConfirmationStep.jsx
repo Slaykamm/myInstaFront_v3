@@ -10,7 +10,7 @@ import {
     setIsPhoneConformedAction
 } from '../../../../../redux/ActionCreators'
 import { store } from '../../../../../redux/reducers/index'
-
+import { BACKED_ADDRESS } from '../../../../../constants/constants'
 export default function PhoneConfirmationStep(
     {
         user,
@@ -33,7 +33,7 @@ export default function PhoneConfirmationStep(
     const checkCode = (e) => {
         e.preventDefault();
 
-        axios.get(`http://127.0.0.1:8000/api/author/${user.authorID}`)
+        axios.get(`http://${BACKED_ADDRESS}/api/author/${user.authorID}`)
             .then(resp => {
 
                 if (get(resp.data, ['phoneConfirmationCode']) == smsCodeToConfirm){
@@ -45,7 +45,7 @@ export default function PhoneConfirmationStep(
                     }
                     const url = '/author'
 
-                    const putMessage = axios.patch(`http://127.0.0.1:8000/api${url}/${user.authorID}/`, message);
+                    const putMessage = axios.patch(`http://${BACKED_ADDRESS}/api${url}/${user.authorID}/`, message);
                     putMessage.then(resp2 => {
                          dispatch(setIsPhoneConformedAction(true))
                          console.log('resp', resp2)

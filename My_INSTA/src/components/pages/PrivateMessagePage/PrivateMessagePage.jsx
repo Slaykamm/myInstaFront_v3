@@ -341,7 +341,7 @@ function PrivateMessagePage(props) {
             // console.log(JSON.stringify(push))
         //     // window.localStorage.setItem('userWebPush', JSON.stringify(push))
         //     const body = {'head': '111', 'body': '222', 'id': '221'}
-        //     const sss = axios.post('http://127.0.0.1:8000/send_push/', body)
+        //     const sss = axios.post('http://${BACKED_ADDRESS}/send_push/', body)
         //     sss.then(resp => {
         //         console.log('RESPONSE', resp)
         //     })

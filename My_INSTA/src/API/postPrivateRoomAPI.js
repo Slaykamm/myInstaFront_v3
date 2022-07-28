@@ -2,6 +2,7 @@ import axios from "axios";
 import { postUserRoomAction } from "../redux/actions/postUserRoomAction";
 import { getIndexesFromPrivateRoomNameService } from "../services/roomNamesService";
 import { get } from 'lodash'
+import { BACKED_ADDRESS } from "../constants/constants";
 
 
 //ф--------------функция для асинхронного запроса
@@ -22,7 +23,7 @@ export const postRoomAPI  = (value, message, userID) => {
             "privateRoomMembers": usersID
         }
 
-        const getRoomAPI = axios.post(`http://127.0.0.1:8000/api/privaterooms/`, params);
+        const getRoomAPI = axios.post(`http://${BACKED_ADDRESS}/api/privaterooms/`, params);
         getRoomAPI.then(response => {
 
             const mess = {
@@ -34,7 +35,7 @@ export const postRoomAPI  = (value, message, userID) => {
             console.log('mess', mess)
             
 
-            const postPrivateMessAPI = axios.post(`http://127.0.0.1:8000/api/prvatemessages/`, mess);
+            const postPrivateMessAPI = axios.post(`http://${BACKED_ADDRESS}/api/prvatemessages/`, mess);
 
             postPrivateMessAPI.then(resp2 => {
                 dispatch(postUserRoomAction(resp2))

@@ -7,7 +7,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import cl from './LeftSideBar.module.css'
 import { filter, get } from 'lodash'
 import Nav from 'react-bootstrap/Nav'
-
+import { BACKED_ADDRESS } from '../../constants/constants';
 
 
 const _LeftSideBar = (props) => {
@@ -48,7 +48,7 @@ const _LeftSideBar = (props) => {
 
                 {get(filter(props.usersDict, {'username':localStorage.getItem('SLNUserName')}),[0, 'avatar']) 
                             ? <span> <img src={get(filter(props.usersDict, {'username':localStorage.getItem('SLNUserName')}),[0, 'avatar'])}/></span>
-                            : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                            : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                         }
 
 

@@ -8,7 +8,8 @@ import MyModal from '../../../../UI/MyModal/MyModal'
 import CommentInput from '../CommentInput/CommentInput'
 import DropDown from '../../../../UI/DropDown/DropDown'
 import UserCabinet from '../../../../modules/UserCabinet/UserCabinet'
-
+import { BACKED_ADDRESS } from 
+'../../../../constants/constants'
 
 
 function Comment({
@@ -100,7 +101,7 @@ function Comment({
                         >
                             {props.avatar 
                             ? <span> <img src={props.avatar} alt='avatar'/></span>
-                            : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                            : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                         }
 
 

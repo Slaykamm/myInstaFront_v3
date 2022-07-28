@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getCommentsWithQuotationAction } from "../redux/actions/getCommentsWithQuotationAction";
 import { filter, flatten } from 'lodash'
-
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const getCommentsWithQuotationAPI = (videoID, userToken) => {
@@ -14,13 +14,13 @@ export const getCommentsWithQuotationAPI = (videoID, userToken) => {
         }
 
         const  commentsAPI = axios.get(
-            `http://127.0.0.1:8000/api/comments/?video=${videoID}`, params);
+            `http://${BACKED_ADDRESS}/api/comments/?video=${videoID}`, params);
             
 
         commentsAPI.then(response => {
             if (response.data){
                 const getQuotationsForCommentAPI = axios.get(
-                    `http://127.0.0.1:8000/api/quotations/?video=${videoID}`, params
+                    `http://${BACKED_ADDRESS}/api/quotations/?video=${videoID}`, params
                 );
                     
                 getQuotationsForCommentAPI.then(resp => {
@@ -96,7 +96,7 @@ export const getCommentsWithQuotationAPI = (videoID, userToken) => {
         
 
 //         const commentsAPI = axios.get(
-//             `http://127.0.0.1:8000/api/comments/?video=${videoID}`, params);
+//             `http://1${BACKED_ADDRESS}/api/comments/?video=${videoID}`, params);
                    
 //         commentsAPI.then(response => {
 //             //диспатчим ActionCreator
@@ -109,7 +109,7 @@ export const getCommentsWithQuotationAPI = (videoID, userToken) => {
 //             get(response,['data']).map((quotes)=>{
 //             //        console.log('quotes', quotes)
 //                     const getQuotesAPI = axios.get(
-//                         `http://127.0.0.1:8000/api/quotations/?baseComment=${quotes.id}`, params)
+//                         `http://${BACKED_ADDRESS}/api/quotations/?baseComment=${quotes.id}`, params)
 //                         getQuotesAPI.then(resp =>{
 //                       //      console.log('resp', resp)
 //                        // response.data[quotes.id-1].quotedCommentID=[]

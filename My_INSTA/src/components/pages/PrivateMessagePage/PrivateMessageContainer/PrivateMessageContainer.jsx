@@ -21,7 +21,7 @@ import { getPrivateRooms } from '../../../../redux/Selectors/privateRoomsSelecto
 import { getPrivateRoomsAPI } from '../../../../API/getPrivateRoomsAPI'
 import CommentInputRef from '../../../../modules/CommentInputRef/CommentInputRef'
 import { store } from '../../../../redux/reducers/index'
-
+import { BACKED_ADDRESS } from '../../../../constants/constants'
 
 function _PrivateMessageContainer({
     privateMessageEdit,
@@ -53,7 +53,7 @@ function _PrivateMessageContainer({
     function startChat(id){
         setModal(true)
 
-        const ws = new WebSocket('ws://127.0.0.1:8000/api/prvatemessages/')
+        const ws = new WebSocket(`ws://${BACKED_ADDRESS}/api/prvatemessages/`)
         setWss(ws)
             ws.onopen = () => {
                 // on connecting, do nothing but log it to the console
@@ -190,7 +190,7 @@ function _PrivateMessageContainer({
 
                 {avatar 
                         ? <span> <img src={avatar} alt='avatar'/></span>
-                        : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                        : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                     }
 
 

@@ -22,7 +22,7 @@ import NameForm from '../../UI/LoadFIlesForm/NameForm';
 
 import { getUserTokenAPI } from '../../API/getUserToken';
 import LkAvatarContainer from './LkAvatarContainer/LkAvatarContainer';
-
+import { BACKED_ADDRESS } from '../../constants/constants'
 
 
 
@@ -214,7 +214,7 @@ function handleAvatarSubmit(e) {
     var formData = new FormData;
     formData.append('imagefile', files[0]);
 
-        const url = `http://127.0.0.1:8000/api/author/${get(filter(props.usersDict, {'username':localStorage.getItem('SLNUserName')}),[0, 'userID'])}/`
+        const url = `http://${BACKED_ADDRESS}/api/author/${get(filter(props.usersDict, {'username':localStorage.getItem('SLNUserName')}),[0, 'userID'])}/`
 
         props.postToBaseMedia(formData, url)
         //setAvatarDirty()
@@ -305,14 +305,14 @@ const [avaChanged, setAvaChanged] = useState('')
                             <div>
                                 {get(filter(props.usersDict, {'username':localStorage.getItem('SLNUserName')}),[0, 'avatar']) 
                                     ? <span> <img src={get(filter(props.usersDict, {'username':localStorage.getItem('SLNUserName')}),[0, 'avatar'])}/></span>
-                                    : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                                    : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                                 }
                             </div>
                         
                         :   <div>
                                 {get(filter(props.usersDict, {'username':foreignUser}),[0, 'avatar']) 
                                     ? <span> <img src={get(filter(props.usersDict, {'username':foreignUser}),[0, 'avatar'])}/></span>
-                                    : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                                    : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                                 }
                     </div>
 

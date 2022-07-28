@@ -4,6 +4,7 @@ import cl from './UserAvatarContainer.module.css'
 import { useState } from 'react'
 import axios from 'axios'
 import { get } from 'lodash'
+import { BACKED_ADDRESS } from '../../../../constants/constants'
 
 
 export default function UserAvatarContainer(
@@ -23,7 +24,7 @@ export default function UserAvatarContainer(
             let files = e.target.files
             var formData = new FormData;
             formData.append('imagefile', files[0]);
-            const url = `http://127.0.0.1:8000/api/author/${userForEdit.id}/`
+            const url = `http://${BACKED_ADDRESS}/api/author/${userForEdit.id}/`
 
 
             // props.postToBaseMedia(formData, url)
@@ -46,7 +47,7 @@ export default function UserAvatarContainer(
             postMedia.then(resp => {
                 if (resp.status === 200){
                     console.log('loaded')
-                    const getAvatar = axios.get(`http://127.0.0.1:8000/api/author/?id=${user.authorID}`);
+                    const getAvatar = axios.get(`http://${BACKED_ADDRESS}/api/author/?id=${user.authorID}`);
                     getAvatar.then(response => {
                         console.log('response AVA', response)
                         setUserAvatar(get(response.data, ['0', 'avatar']))
@@ -62,7 +63,7 @@ export default function UserAvatarContainer(
     <div className={cl.UserInfoViewImage}>
         {userAvatar
             ? <span><img src={userAvatar} alt='avatar'/></span>
-            : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+            : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
         }
 
         <div className={cl.AvatarButton}>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { changeUserPasswordAction } from "../redux/actions/changeUserPasswordAction";
-
+import { BACKED_ADDRESS } from "../constants/constants";
 export const changeUserPasswordAPI  = (userToken, formData) => {
     return function(dispatch) {
 
@@ -17,7 +17,7 @@ export const changeUserPasswordAPI  = (userToken, formData) => {
         }
         
 
-        const changePassword = axios.patch(`http://127.0.0.1:8000/api/change-password/`, data, params);
+        const changePassword = axios.patch(`http://${BACKED_ADDRESS}/api/change-password/`, data, params);
         changePassword.then(response => {
 
             //диспатчим ActionCreator
