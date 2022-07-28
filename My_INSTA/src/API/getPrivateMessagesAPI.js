@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getPrivateMessagesAction } from "../redux/actions/getPrivateMessagesAction";
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const getPrivateMessagesAPI  = (value) => {
@@ -9,7 +10,7 @@ export const getPrivateMessagesAPI  = (value) => {
         const privateMessagesToUser = [];
         if (value){
             value.map(val=> {
-                const privateMessages = axios.get(`http://127.0.0.1:8000/api/prvatemessages/?privateRoom=${val.id}`)
+                const privateMessages = axios.get(`http://${BACKED_ADDRESS}/api/prvatemessages/?privateRoom=${val.id}`)
                 privateMessages.then(response => {
                         privateMessagesToUser.push(response.data)
                         //concat(privateMessagesToUser, response.data)

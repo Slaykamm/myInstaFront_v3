@@ -1,20 +1,20 @@
 import axios from "axios";
 import { postCommentsWithQuotationAction } from "../redux/actions/postCommentsWithQuotationAction";
 import { filter, flatten } from 'lodash'
-
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const postCommentsWithQuotationAPI = (urlComment, baseMessage, urlQuot, quotMessage) => {
     return function(dispatch) {
 
         const  postBaseCommentAPI = axios.post(
-            `http://127.0.0.1:8000/api${urlComment}/`, baseMessage);
+            `http://${BACKED_ADDRESS}/api${urlComment}/`, baseMessage);
             
         postBaseCommentAPI.then(respBaseComment => {
             quotMessage.baseComment = respBaseComment.data.id 
 
             const postQuotationAPI = axios.post(
-                `http://127.0.0.1:8000/api${urlQuot}/`, quotMessage);
+                `http://${BACKED_ADDRESS}/api${urlQuot}/`, quotMessage);
 
             postQuotationAPI.then(respQuotation => {
                 dispatch(postCommentsWithQuotationAction(respBaseComment))
@@ -26,7 +26,7 @@ export const postCommentsWithQuotationAPI = (urlComment, baseMessage, urlQuot, q
         // commentsAPI.then(response => {
         //     if (response.data){
         //         const getQuotationsForCommentAPI = axios.get(
-        //             `http://127.0.0.1:8000/api/quotations/?video=${videoID}`, params
+        //             `http://${BACKED_ADDRESS}/api/quotations/?video=${videoID}`, params
         //         );
                     
         //         getQuotationsForCommentAPI.then(resp => {
@@ -102,7 +102,7 @@ export const postCommentsWithQuotationAPI = (urlComment, baseMessage, urlQuot, q
         
 
 //         const commentsAPI = axios.get(
-//             `http://127.0.0.1:8000/api/comments/?video=${videoID}`, params);
+//             `http://${BACKED_ADDRESS}/api/comments/?video=${videoID}`, params);
                    
 //         commentsAPI.then(response => {
 //             //диспатчим ActionCreator
@@ -115,7 +115,7 @@ export const postCommentsWithQuotationAPI = (urlComment, baseMessage, urlQuot, q
 //             get(response,['data']).map((quotes)=>{
 //             //        console.log('quotes', quotes)
 //                     const getQuotesAPI = axios.get(
-//                         `http://127.0.0.1:8000/api/quotations/?baseComment=${quotes.id}`, params)
+//                         `http://${BACKED_ADDRESS}/api/quotations/?baseComment=${quotes.id}`, params)
 //                         getQuotesAPI.then(resp =>{
 //                       //      console.log('resp', resp)
 //                        // response.data[quotes.id-1].quotedCommentID=[]

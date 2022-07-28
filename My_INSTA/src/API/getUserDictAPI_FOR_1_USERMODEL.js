@@ -1,11 +1,11 @@
 import axios from "axios";
 import { getUserDictionary } from "../redux/ActionCreators";
 import { filter, forEach, map, omit } from 'lodash'
-
+import { BACKED_ADDRESS } from "../constants/constants";
 //ф--------------функция для асинхронного запроса
 export const getUserDictAPI  = () => {
     return function(dispatch) {
-        const authorDictAPI = axios.get('http://127.0.0.1:8000/api/author/');
+        const authorDictAPI = axios.get(`http://${BACKED_ADDRESS}/api/author/`);
         authorDictAPI.then(respAuthor => {  //получаем всех авторов (аватары и телефоны) связь по pk юзера
             const securedUSerDict = []
             forEach(respAuthor.data, function(value)  {

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { postToBaseAction } from "../redux/actions/postToBaseAction";
-
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const postToBaseAPI  = (message, url) => {
     return function(dispatch) {
-       const putMessage = axios.post(`http://127.0.0.1:8000/api${url}/`, message);
+       const putMessage = axios.post(`http://${BACKED_ADDRESS}/api${url}/`, message);
        putMessage.then(resp2 => {
             console.log('resp', resp2)
             dispatch(postToBaseAction(resp2))

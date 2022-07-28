@@ -1,6 +1,7 @@
 import { createEmptyUserAction } from "../redux/actions/createEmptyUserAction";
 import axios from "axios";
 import { get } from 'lodash'
+import { BACKED_ADDRESS } from "../constants/constants";
 
 
 //ф--------------функция для асинхронного запроса
@@ -16,12 +17,12 @@ export const createNewUserAPI  = () => {
         }
 
         console.log('step1: user', user)
-        const creatUser = axios.post('http://127.0.0.1:8000/auth/registration/', user)
+        const creatUser = axios.post(`http://${BACKED_ADDRESS}/auth/registration/`, user)
 
         creatUser.then(resp => {
 
             console.log('step2: create user result', resp)
-            const getId = axios.get(`http://127.0.0.1:8000/api/users/?username=${user.username}`)
+            const getId = axios.get(`http://${BACKED_ADDRESS}/api/users/?username=${user.username}`)
 
             getId.then(respID =>{
                 console.log('respID', respID)
@@ -39,7 +40,7 @@ export const createNewUserAPI  = () => {
                 })
 
                 console.log('step4: new author ', author)
-                const makeAuthor = axios.post('http://127.0.0.1:8000/api/author/', author)
+                const makeAuthor = axios.post(`http://${BACKED_ADDRESS}/api/author/`, author)
 
                 makeAuthor.then(newAuthorResp => {
                     console.log('step4: new author ', newAuthorResp)

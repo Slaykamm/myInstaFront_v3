@@ -83,7 +83,7 @@ function RegistrationPage(props) {
 
 
     // Логика - создаем пустого юзера . 
-    //     POST http://127.0.0.1:8000/auth/registration/ HTTP/1.1
+    //     POST http://${BACKED_ADDRESS}/auth/registration/ HTTP/1.1
     //     Content-Type: application/json
     
 

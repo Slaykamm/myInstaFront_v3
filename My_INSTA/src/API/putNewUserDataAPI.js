@@ -1,6 +1,6 @@
 import axios from "axios";
 import { putNewUserDataAction } from "../redux/actions/putNewUserDataAction";
-
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------
 export const putNewUserDataAPI  = (message, url, id, userToken, password, authorID, phoneData) => {
@@ -8,7 +8,7 @@ export const putNewUserDataAPI  = (message, url, id, userToken, password, author
          console.log('url', url)
          
         
-       const putMessage = axios.patch(`http://127.0.0.1:8000/api${url}/${id}/`, message);
+       const putMessage = axios.patch(`http://${BACKED_ADDRESS}/api${url}/${id}/`, message);
        putMessage.then(resp2 => {
             console.log('step1 email and Name OK!', resp2)
 
@@ -27,12 +27,12 @@ export const putNewUserDataAPI  = (message, url, id, userToken, password, author
             }
             
     
-            const changePassword = axios.patch(`http://127.0.0.1:8000/api/change-password/`, data, params);
+            const changePassword = axios.patch(`http://${BACKED_ADDRESS}/api/change-password/`, data, params);
             changePassword.then(responsePassword => {
     
                 console.log('step2 passwordChanged', responsePassword)
 
-                const putPhone = axios.patch(`http://127.0.0.1:8000/api/author/${authorID}/`, phoneData);
+                const putPhone = axios.patch(`http://${BACKED_ADDRESS}/api/author/${authorID}/`, phoneData);
                 putMessage.then(respPhoneAuthor => {
                      console.log('step3 respPhoneAuthor', respPhoneAuthor)
 

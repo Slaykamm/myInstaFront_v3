@@ -1,6 +1,6 @@
 import axios from "axios";
 import { postUserPrivateAction } from "../redux/actions/postPrivateUserAction";
-
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const postMessageAPI  = (roomID, roomName, message, userID) => {
@@ -15,7 +15,7 @@ export const postMessageAPI  = (roomID, roomName, message, userID) => {
 
         console.log('mess postMessageAPI', mess)
 
-       const postPrivateMessAPI = axios.post(`http://127.0.0.1:8000/api/prvatemessages/`, mess);
+       const postPrivateMessAPI = axios.post(`http://${BACKED_ADDRESS}/api/prvatemessages/`, mess);
 
        postPrivateMessAPI.then(resp2 => {
             dispatch(postUserPrivateAction(resp2))

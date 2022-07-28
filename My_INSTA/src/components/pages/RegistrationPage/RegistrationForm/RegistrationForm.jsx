@@ -21,6 +21,7 @@ import { createSelector } from 'reselect'
 import { useDispatch } from 'react-redux'
 import { setIsEmailConfirmedAction } from '../../../../redux/ActionCreators'
 import { getIsRegistrationButtonEnabled } from '../../../../redux/Selectors/welcomePageSelectors';
+import { BACKED_ADDRESS } from '../../../../constants/constants'
 
 function RegistrationForm(
     {
@@ -39,7 +40,7 @@ function RegistrationForm(
     function regEmailButtonHandle(event) {
         event.preventDefault();
 
-        axios.get(`http://127.0.0.1:8000/api/auth/emailverify/?id=${user.userID}&author=${user.authorID}&email=${userEmail}`)
+        axios.get(`http://${BACKED_ADDRESS}/api/auth/emailverify/?id=${user.userID}&author=${user.authorID}&email=${userEmail}`)
         .then(res => {
             console.log('put to storage', res)
             dispatch(setIsEmailConfirmedAction(true))
@@ -63,7 +64,7 @@ function RegistrationForm(
 
         
         //TODO vinesty v thunk
-        axios.post('http://127.0.0.1:8000/send_otp/', body)
+        axios.post(`http://${BACKED_ADDRESS}/send_otp/`, body)
         .then(resp => {
             console.log('confimration phone number', resp.data)
             

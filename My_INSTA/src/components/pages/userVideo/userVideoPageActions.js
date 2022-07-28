@@ -1,4 +1,5 @@
 import { get, filter } from 'lodash' 
+import { BACKED_ADDRESS } from '../../../constants/constants';
 
 
 export function createNewVideoAction( queryVideoInput, queryDescriptionInput, usersDict,  propsCreateNewVideo){
@@ -24,7 +25,7 @@ export function submitVideoAction(files, id, postToBaseMedia){
 
     var formData = new FormData;
     formData.append('videofile', files[0]);
-        const url = `http://127.0.0.1:8000/api/video/${id}/`
+        const url = `http://${BACKED_ADDRESS}/api/video/${id}/`
         postToBaseMedia(formData, url)
         
 }
@@ -37,7 +38,7 @@ export function submitVideoAction(files, id, postToBaseMedia){
 export function handlePreviewSubmitAction(files, id, postToBaseMedia) {
     var formData = new FormData;
     formData.append('imagefile', files[0]);
-        const url = `http://127.0.0.1:8000/api/video/${id}/`
+        const url = `http://${BACKED_ADDRESS}/api/video/${id}/`
         postToBaseMedia(formData, url)
 }
 

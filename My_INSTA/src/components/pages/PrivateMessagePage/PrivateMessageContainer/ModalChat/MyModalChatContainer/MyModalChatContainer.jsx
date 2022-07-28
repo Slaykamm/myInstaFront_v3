@@ -6,6 +6,7 @@ import DropDown from '../../../../../../UI/DropDown/DropDown'
 import { useState } from 'react'
 import MyModal from '../../../../../../UI/MyModal/MyModal'
 import CommentInput from '../../../../commentOutput/CommentInput/CommentInput'
+import {BACKED_ADDRESS} from '../../../../../../constants/constants'
 
 function MyModalChatContainer(
     {
@@ -47,7 +48,7 @@ function MyModalChatContainer(
                         <div >
                             {get(filter(usersDict, {'author': author}),[0,'avatar']) 
                             ? <span> <img style={{height:'50px'}} src={get(filter(usersDict, {'author': author}),[0,'avatar'])}/></span>
-                            : <span><img style={{height:'50px'}} src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                            : <span><img style={{height:'50px'}} src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                         }
                         </div>
                         <div>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { verifyUserAction } from "../redux/actions/verifyUser";
 import { get } from 'lodash'
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const getCheckUserAPI  = (userData) => {
@@ -17,7 +18,7 @@ export const getCheckUserAPI  = (userData) => {
 
         console.log('params', params)
 
-        const logingPostAPI = axios.get(`http://127.0.0.1:8000/api/users/?username=${get(userData,['username'])}`, params);
+        const logingPostAPI = axios.get(`http://${BACKED_ADDRESS}/api/users/?username=${get(userData,['username'])}`, params);
         logingPostAPI.then(response => {
             console.log(response)
             //диспатчим ActionCreator

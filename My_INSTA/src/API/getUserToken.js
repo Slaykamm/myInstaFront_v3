@@ -1,6 +1,6 @@
 import axios from "axios";
 import { userTokenAction } from '../redux/actions/userTokenAction'
-
+import { BACKED_ADDRESS } from "../constants/constants";
 //ф--------------функция для асинхронного запроса
 export const getUserTokenAPI  = (userData) => {
     return function(dispatch) {
@@ -10,7 +10,7 @@ export const getUserTokenAPI  = (userData) => {
         }
 
         
-        const logingPostAPI = axios.post('http://127.0.0.1:8000/auth/login/', userData, header);
+        const logingPostAPI = axios.post(`http://${BACKED_ADDRESS}/auth/login/`, userData, header);
         logingPostAPI.then(response => {
             //диспатчим ActionCreator
             dispatch(userTokenAction(response)) 

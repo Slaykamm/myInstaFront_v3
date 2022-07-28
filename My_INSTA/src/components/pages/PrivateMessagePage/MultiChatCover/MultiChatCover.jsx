@@ -17,8 +17,7 @@ import { useState } from 'react'
 import MyModalChatContainer from '../PrivateMessageContainer/ModalChat/MyModalChatContainer/MyModalChatContainer'
 import { getIndexesFromMultyUsersRoomNameService, getMultyUsersRoomNameFromIndexesService } from '../../../../services/roomNamesService'
 import CommentInputRef from '../../../../modules/CommentInputRef/CommentInputRef'
-
- 
+import { BACKED_ADDRESS } from  '../../../../constants/constants' 
 
 function _MultiChatCover({
     usersDict, 
@@ -71,7 +70,7 @@ function _MultiChatCover({
 // web sockets initialize here
 
         console.log('name', name)
-        const ws = new WebSocket('ws://127.0.0.1:8000/api/prvatemessages/')
+        const ws = new WebSocket(`ws://${BACKED_ADDRESS}/api/prvatemessages/`)
         setWss(ws)
             ws.onopen = () => {
                 console.log('connected')
@@ -277,7 +276,7 @@ function _MultiChatCover({
                     >
                         {get(filter(usersDict, {'author': chatMember}), ['0', 'avatar']) 
                                 ? <span> <img src={get(filter(usersDict, {'author': chatMember}), ['0', 'avatar']) } alt='avatar'/></span>
-                                : <span> <img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span>
+                                : <span> <img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='avatar'/></span>
                             }
                     </div>
                 )}

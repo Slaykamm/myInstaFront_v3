@@ -3,6 +3,7 @@ import { get } from 'lodash'
 import cl from './userVideoLoadingForm.module.css'
 import NameForm from '../../../../UI/LoadFIlesForm/NameForm'
 import MyButton from '../../../../UI/MyButton/MyButton'
+import { BACKED_ADDRESS } from  '../../../../constants/constants'
 
 function UserVideoLoadingForm({
     handleAvatarSubmit,
@@ -54,11 +55,11 @@ function UserVideoLoadingForm({
                             onChange={e=>setQueryDescriptionInput(e.target.value)}
                         /></div>
                         <div className={cl.InnerContainer} >
-                            {/* <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='avatar'/></span> */}
+                            {/* <span><img src='http://${BACKED_ADDRESS}/media/avatar/default.jpg' alt='avatar'/></span> */}
 
                         {isVideoLoaded     //get(videoObject,['video']) 
-                                ? <span><img src='http://127.0.0.1:8000/media/avatar/VideoLoaded.jpg' alt='video'/></span>
-                                : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='video'/></span>
+                                ? <span><img src={`http://${BACKED_ADDRESS}/media/avatar/VideoLoaded.jpg`} alt='video'/></span>
+                                : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='video'/></span>
                             }
 
                         </div>
@@ -68,8 +69,8 @@ function UserVideoLoadingForm({
                         {isImageLoaded             //get(videoObject,['image']) 
                                 ? isEditVideo 
                                     ? <span> <img src={videoPreview} alt='video'/></span>
-                                    : <span> <img src='http://127.0.0.1:8000/media/avatar/VideoLoaded.jpg' alt='video'/></span>
-                                : <span><img src='http://127.0.0.1:8000/media/avatar/default.jpg' alt='preview'/></span>
+                                    : <span> <img src={`http://${BACKED_ADDRESS}/media/avatar/VideoLoaded.jpg`} alt='video'/></span>
+                                : <span><img src={`http://${BACKED_ADDRESS}/media/avatar/default.jpg`} alt='preview'/></span>
                             }
                         </div>
                     

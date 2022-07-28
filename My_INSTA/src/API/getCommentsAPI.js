@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getCommentsAction } from "../redux/actions/getCommentsAction";
-
+import { BACKED_ADDRESS } from "../constants/constants";
 
 //ф--------------функция для асинхронного запроса
 export const getCommentsThunkAPI = (videoID, userToken) => {
@@ -13,7 +13,7 @@ export const getCommentsThunkAPI = (videoID, userToken) => {
         }
 
         const commentsAPI = axios.get(
-            `http://127.0.0.1:8000/api/comments/?video=${videoID}`, params);
+            `http://${BACKED_ADDRESS}/api/comments/?video=${videoID}`, params);
                    
         commentsAPI.then(response => {
             //диспатчим ActionCreator
@@ -67,7 +67,7 @@ export const getCommentsThunkAPI = (videoID, userToken) => {
         
 
 //         const commentsAPI = axios.get(
-//             `http://127.0.0.1:8000/api/comments/?video=${videoID}`, params);
+//             `http://${BACKED_ADDRESS}/api/comments/?video=${videoID}`, params);
                    
 //         commentsAPI.then(response => {
 //             //диспатчим ActionCreator
@@ -80,7 +80,7 @@ export const getCommentsThunkAPI = (videoID, userToken) => {
 //             get(response,['data']).map((quotes)=>{
 //             //        console.log('quotes', quotes)
 //                     const getQuotesAPI = axios.get(
-//                         `http://127.0.0.1:8000/api/quotations/?baseComment=${quotes.id}`, params)
+//                         `http://${BACKED_ADDRESS}/api/quotations/?baseComment=${quotes.id}`, params)
 //                         getQuotesAPI.then(resp =>{
 //                       //      console.log('resp', resp)
 //                        // response.data[quotes.id-1].quotedCommentID=[]
