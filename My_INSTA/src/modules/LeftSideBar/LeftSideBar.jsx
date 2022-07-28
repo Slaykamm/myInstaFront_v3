@@ -8,6 +8,7 @@ import cl from './LeftSideBar.module.css'
 import { filter, get } from 'lodash'
 import Nav from 'react-bootstrap/Nav'
 import { BACKED_ADDRESS } from '../../constants/constants';
+import { ENV } from '../../constants/constants';
 
 
 const _LeftSideBar = (props) => {
