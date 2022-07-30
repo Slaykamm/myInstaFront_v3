@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { get, filter, includes } from 'lodash'
 import Menu from '../../../modules/Menu/Menu'
+import MenuNew from '../../../modules/MenuNew/MenuNew';
 import Header from '../header/Header'
 import VideoContainer from '../main/VideoContainer/VideoContainer'
 import UserVideoLoadingForm from './userVideoLoadingForm/userVideoLoadingForm'
@@ -179,7 +180,7 @@ function _UserVideoPage(props) {
     return (
         <>
             <Header/>
-            <Menu
+            <MenuNew
                 value={searchQuery}
                 onChange={checkTheInput}
                 placeholder='Поиск в названиях'

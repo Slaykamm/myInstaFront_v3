@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../header/Header'
 import Menu from '../../../modules/Menu/Menu'
+import MenuNew from '../../../modules/MenuNew/MenuNew';
 import Footer from '../footer/Footer'
 import cl from './videoPostPage.module.css'
 import { connect } from 'react-redux'
@@ -141,7 +142,7 @@ function _VideoPostPage(props) {
             }
 
             <Header/>
-            <Menu
+            <MenuNew
                 placeholder='Поиск автора в комментариях'
             />  
             {props.video

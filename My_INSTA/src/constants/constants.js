@@ -43,5 +43,5 @@ export const SET_IS_PHONE_COMFRIMED = 'SET_IS_PHONE_COMFRIMED'
 export const SET_WS = 'SET_WS'
 
 export const GET_USER_AVATAR = 'GET_USER_AVATAR'
-// export const BACKED_ADDRESS = '194.226.49.38:8000'
-export const BACKED_ADDRESS = '127.0.0.1:8000'
+export const BACKED_ADDRESS = '194.226.49.38:8000'
+// export const BACKED_ADDRESS = '127.0.0.1:8000'

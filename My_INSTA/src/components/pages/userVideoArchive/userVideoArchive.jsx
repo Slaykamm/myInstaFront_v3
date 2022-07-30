@@ -1,5 +1,6 @@
 import React from 'react'
 import Menu from '../../../modules/Menu/Menu'
+import MenuNew from '../../../modules/MenuNew/MenuNew';
 import Header from '../header/Header'
 import cl from './userVideoArchive.module.css'
 import { useState, useEffect } from 'react'
@@ -81,7 +82,7 @@ function _UserVideoArchive(props) {
     <>
     
       <Header/>
-      <Menu
+      <MenuNew
         value={searchQuery}
         onChange={checkTheInput}
         placeholder='Поиск в названиях'

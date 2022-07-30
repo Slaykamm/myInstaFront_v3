@@ -13,6 +13,7 @@ import { changeUserPasswordAPI } from '../../API/changeUserPasswordAPI';
 import { getPutToBaseResult, getPostToBaseMediaResult, getChangePasswordResult } from  '../../redux/Selectors/baseSelectors'
 import Header from '../../components/pages/header/Header'
 import Menu from '../Menu/Menu'
+import MenuNew from '../MenuNew/MenuNew';
 import MyButton from '../../UI/MyButton/MyButton'
 import LKLogin from './LKLogin/LKLogin';
 import LKEmail from './LKEmail/LKEmail';
@@ -244,7 +245,7 @@ const [avaChanged, setAvaChanged] = useState('')
             <div>
 
                 <Header/>
-                <Menu 
+                <MenuNew
                     disable
                     value={searchQuery}
                     onChange={checkTheInput}

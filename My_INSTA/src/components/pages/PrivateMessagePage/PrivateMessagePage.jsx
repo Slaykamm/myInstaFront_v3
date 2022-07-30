@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../header/Header'
 import Menu from '../../../modules/Menu/Menu'
+import MenuNew from '../../../modules/MenuNew/MenuNew';
 import PrivateMessageContainer from './PrivateMessageContainer/PrivateMessageContainer'
 import MyPrivateWhispModule from '../../../modules/MyPrivateWhispModule/MyPrivateWhispModule'
 import MultiChatCover from './MultiChatCover/MultiChatCover'
@@ -406,7 +407,7 @@ function PrivateMessagePage(props) {
             :   <span></span>
             }
         <Header/>
-        <Menu
+        <MenuNew
         value={searchQuery}
         onChange={checkTheInput}
         placeholder='Поиск пользователя для отправки сообщений'

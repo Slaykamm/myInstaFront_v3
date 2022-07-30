@@ -8,45 +8,135 @@
 
 }
 .Outer {
+
     background-color:#444653;
     margin-top: 30px;
+    display: flex;
     z-index:2;
-
-   
 }
 
-.Outer ul { 
-    list-style: none; 
+.SidePanelCall {
+    font-size: large;
+ 
+}
+
+.Inner {
+    color:white;
+}
+
+.MenuBody {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 3rem;
-    color: white;
+    justify-content: flex-start;
+
 }
 
-.Outer input {
-    width: 300px;
-    align-items: center;
-}
-
-.Transform:hover {
-
-    color: white;
-    transform: scale(1.15);
+.menuPanel {
     display: flex;
-    border-radius: 20px;
-    align-items: center;
+    justify-content: flex-end;
+}
+
+
+
+.menuPanel span:hover{
+    transform: scale(1.1);
+}
+
+.searchPanel input {
+    width: 85%;
+    margin-left: 10%;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+
+.Outer h3 {
+    color: rgb(204, 204, 204);
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 3rem;
     cursor: pointer;
+    font-size: 1.6rem;
+    margin-top:5px;
+}
+
+
+.Outer h3:hover {
+    color: rgb(255, 255, 255);
+    border: 1px white;
+    border-radius: 20px; /* Радиус скругления */
+    background-color: #7d7d7e;
 
 }
 
 
-.Transform:active {
-    background-color: green;
+.MenuContainer{
+    display: grid;
+    grid-template-columns: minmax(25%,28%) minmax(20%,25%) minmax(40%,72%) minmax(10%,12%) minmax(22%,27%) minmax(30%,32%) minmax(30%,32%);
+}
+.inBoxCenter{
+    display: flex;
+    justify-content: center;
 }
 
 
-.Outer ul li span {
+.inBoxCenter:hover {
+    color: rgb(255, 255, 255);
+    border: 1px white;
+    border-radius: 20px; /* Радиус скругления */
+    background-color: #7d7d7e;
+
+}
+
+.inBoxCenter span {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: smaller;
+}
+
+.MenuSidePanelBtn{
+    font-size: '8px';
+    margin-top:'7px'; 
+    margin-left:'10px';
+
+}
+
+@media screen and (max-width:650px) {
+    .SidePanelCall {
+        font-size: small;
+     
+    }
+    .MenuContainer{
+        display: grid;
+        width: 100%;
+        grid-template-columns: minmax(15%,17%) minmax(1%,1%) minmax(16%,16%) minmax(1%,1%) minmax(8%,12%) minmax(18%,20%) minmax(24%,26%);
+    }
     
+    .Outer h3 {
+        color: rgb(204, 204, 204);
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 0.1rem;
+        cursor: pointer;
+        font-size: 0.8rem;
+        margin-top:5px;
+    }
+
+    .searchPanel input {
+        width: 100%;
+        margin-left: 0%;
+        border-radius: 5px;
+        transform: scale(0.7);
+    }
+
+    span {
+        font-size: 8px;
+    }
+
+    .inBoxCenter span {
+        color: white;
+        display: flex;
+        align-items: center;
+        font-size: 8px;
+    }
 }

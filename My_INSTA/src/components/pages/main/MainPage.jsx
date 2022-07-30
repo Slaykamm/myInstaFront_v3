@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import Menu from '../../../modules/Menu/Menu';
+import MenuNew from '../../../modules/MenuNew/MenuNew';
 import { connect } from  'react-redux';
 import { getVideoPreviewsAPI } from '../../../API/getPreviewAPI'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -60,7 +61,7 @@ const filteredVideo=filterQuery(listFiles, searchQuery)
     return (
             <div>
                 <Header/>
-                <Menu
+                <MenuNew
                     value={searchQuery}
                     onChange={checkTheInput}
                     placeholder='Поиск в названиях и описаниях'
