@@ -73,3 +73,14 @@
       margin-bottom: 10px;
       font-weight: bold;
   }
+
+
+  @media screen and (max-width:650px){
+    .userInfo img {
+        height: 10px;
+        width: 10px;
+        border-radius: 100px; /* Радиус скругления */
+        border: 3px solid rgb(99, 17, 24); /* Параметры рамки */
+        box-shadow: 0 0 7px #666; /* Параметры тени */  
+    }
+  }
