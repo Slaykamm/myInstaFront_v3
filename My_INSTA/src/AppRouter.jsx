@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate,  } from 'react-router-dom';
 import WelcomePage from './modules/WelcomePage/WelcomePage';
-import MainPage from './components/pages/main/MainPage';
+import MainPage from './components/pages/main/MainPage.tsx';
 import VideoPostPage from './components/pages/videoPage/videoPostPage';
 import UserCabinet from './modules/UserCabinet/UserCabinet';
 import RegistrationPage from './components/pages/RegistrationPage/RegistrationPage';

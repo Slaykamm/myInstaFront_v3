@@ -1,6 +1,6 @@
 import { GET_VIDEO } from "../../constants/constants"
-
-const initialState = {}
+import { initialState } from "./initialState.ts"
+// const initialState = {}
 //{id: '', date: '', authorId: '', authorName: '', content: ''}
 
 

@@ -10,6 +10,13 @@ export const getComments = state => {
 }
 
 
+export const getPreviewSelector = state => {
+    console.log('111111111',state)
+    if (state.getPreview) {
+        return state.getPreview
+    }
+}
+
 
 export const getAllCommentsSelectedbyVideo = createSelector(getComments, comments => {
         return comments
