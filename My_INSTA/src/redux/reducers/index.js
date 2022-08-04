@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import sideBarShow from './sideBarReducer'
-import isActualUser from './isActualUser'
+import sideBarShow from './sideBarReducer.ts'
+import isActualUser from './isActualUser.ts'
 import asyncUsersRequest from './asyncUsersRequest'
 import getPreview from './getPreview.ts'
 import getComments from './getComments'
