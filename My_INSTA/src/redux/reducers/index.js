@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import sideBarShow from './sideBarReducer'
-import isActualUser from './isActualUser'
+import sideBarShow from './sideBarReducer.ts'
+import isActualUser from './isActualUser.ts'
 import asyncUsersRequest from './asyncUsersRequest'
-import getPreview from './getPreview'
+import getPreview from './getPreview.ts'
 import getComments from './getComments'
-import usersDict from "./usersDict";
+import usersDict from "./usersDict.ts";
 import getVideo from "./getVideo";
 import IsErrorAPI from "./isErrorAPI";
 import UserToken from "./userToken";
@@ -33,7 +33,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from "redux-devtools-extension";
 
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     sideBarShow,
     isActualUser,
     asyncUsersRequest,
@@ -66,4 +66,7 @@ const rootReducer = combineReducers({
     form: formReducer
 })
 
+
 export const store=createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+
+

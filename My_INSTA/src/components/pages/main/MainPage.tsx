@@ -1,23 +1,22 @@
-import React from 'react';
-import Footer from '../footer/Footer';
-import Header from '../header/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import { map, reverse, sortBy } from 'lodash';
+var _ = require('lodash')
+import React, { useEffect, useState } from 'react';
+import { connect, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { getVideoPreviewsAPI } from '../../../API/getPreviewAPI';
 import Menu from '../../../modules/Menu/Menu';
 import MenuNew from '../../../modules/MenuNew/MenuNew';
-import { connect } from  'react-redux';
-import { getVideoPreviewsAPI } from '../../../API/getPreviewAPI'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState} from 'react';
-import { useEffect } from 'react';
+import { getPreviewSelector } from '../../../redux/Selectors/baseSelectors';
 import { filterQuery } from '../../../services/filterQuery';
-import VideoContainer from './VideoContainer/VideoContainer';
-import { map, reverse, sortBy } from 'lodash';
-import cl from './MainPage.module.css'
-import { NavLink } from 'react-router-dom';
+import Footer from '../footer/Footer';
+import Header from '../header/Header';
+import cl from './MainPage.module.css';
 import UserStream from './UserStream/UserStream';
+import VideoContainer from './VideoContainer/VideoContainer';
+import { GetPreviewStateArray } from '../../../redux/reducers/getPreview';
 
-
-
-const _MainPage = (props) => {
+const _MainPage: React.FC = (props) => {
 
 const [listFiles, setListFiles] = useState()
 
@@ -31,15 +30,17 @@ useEffect(()=>{
 },[])
 
 
+
 // вывод ленты свежих видео для юзера
 useEffect(()=>{
+    console.log('video', props.videoPreviews)
     setListFiles(props.videoPreviews.filter(({archived, title}) => 
         (archived !== true && title.slice(0, 4) !== '1656')
     ))
 },[props.videoPreviews])
 
 
-const lastVideosForUser = reverse(sortBy(listFiles, ['create_at']))
+const lastVideosForUser = _.reverse(_.sortBy(listFiles, ['create_at']))
 console.log('lastvideosforUser', lastVideosForUser)
 //const filterArchived = sortedStream.filter(({archived}) => archived !== true)
 
@@ -86,7 +87,7 @@ const MainPage = React.memo(_MainPage)
 export default connect(
     // mapStateToProps
     state => ({
-        videoPreviews: state.getPreview
+        videoPreviews: getPreviewSelector(state)
 
     }),
 
